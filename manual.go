@@ -38,6 +38,7 @@ func Free[T any](alloc Allocator, b []T) error {
 
 // TestAllocator is a simple implementation of an [Allocator].
 // It has the added complexity of being able to reuse freed memory later on to potentially detect
+// use-after-free and double-free bugs.
 type TestAllocator struct {
 	maxmem    int
 	currlive  int
